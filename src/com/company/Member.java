@@ -44,4 +44,15 @@ public class Member {
         this.name = name;
         this.fees = fees;
     }
+
+
+    @Override
+    public String toString() {
+        return "Member{" +
+                "memberType=" + memberType +
+                ", memberId=" + memberId +
+                ", name='" + name + '\'' +
+                ", fees=" + fees +
+                '}';
+    }
 }

@@ -1,4 +1,5 @@
 package com.company;
 
-public interface Calculator {
+public interface Calculator <T extends Number>{
+    double calculateFees(T clubID);
 }

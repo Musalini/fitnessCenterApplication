@@ -1,4 +1,4 @@
 package com.company;
 
-public class MembershipManagment extends Member {
+public class MembershipManagment  {
 }
