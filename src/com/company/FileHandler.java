@@ -1,7 +1,6 @@
 package com.company;
 
-import java.io.BufferedReader;
-import java.io.FileReader;
+import java.io.*;
 import java.security.spec.RSAOtherPrimeInfo;
 import java.util.LinkedList;
 
@@ -32,18 +31,30 @@ public class FileHandler {
                 lineRead = reader.readLine();
             }
 
-        } catch (Exception e) {
+        } catch (IOException e) {
             System.out.println("Error!");
         }
 
         return m;
     }
 
-    public void appendFile(String mem) {
-        try()
+    public void appendFile(String mem) throws IOException {
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter("members.csv", true))){
+            writer.write(mem + "\n");
+        } catch (IOException e) {
+            System.out.println("Error!");
+        }
     }
 
-    public void overWriteFile() {
-
+    public void overWriteFile(LinkedList<Member> m) {
+        String s;
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter("members.temp", false))){
+            for (Member member : m) {
+                s = member.toString();
+                writer.write(s + "\n");
+            }
+        } catch (IOException e) {
+            System.out.println("Error!");
+        }
     }
 }
